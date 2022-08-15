@@ -117,8 +117,8 @@ do
             if input:IsKeyDown(left:Get())  then bv.velocity += flyspeed * markiplier * camframe.RightVector * -1 end
             if input:IsKeyDown(back:Get())  then bv.velocity += flyspeed * markiplier * camframe.LookVector * -1 end
             if input:IsKeyDown(right:Get()) then bv.velocity += flyspeed * markiplier * camframe.RightVector end
-            if input:IsKeyDown(up:Get())    then bv.velocity += flyspeed * markiplier * Vector3(0,1,0) end
-            if input:IsKeyDown(down:Get())  then bv.velocity += flyspeed * markiplier * Vector3(0,-1,0) end
+            if input:IsKeyDown(up:Get())    then bv.velocity += flyspeed * markiplier * Vector3.new(0,1,0) end
+            if input:IsKeyDown(down:Get())  then bv.velocity += flyspeed * markiplier * Vector3.new(0,-1,0) end
             wait()
         end
         

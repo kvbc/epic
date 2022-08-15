@@ -83,6 +83,7 @@ do
         else SetAllProperties("BasePart", "Velocity", Vector3.zero)
         end
     end})
+    
     epic:AddSlider({ Name="Walk speed", Value=human.WalkSpeed, Min=1, Max=1000, Callback=function(v)
         human.WalkSpeed = v
     end})
@@ -107,7 +108,7 @@ do
         
         if useplatformstand then human.PlatformStand = true end
         
-        repeat
+        while flying do
             local camframe = game.Workspace.CurrentCamera.CoordinateFrame
             bg.cframe = camframe
             bv.velocity = Vector3.zero
@@ -116,13 +117,13 @@ do
             if input:IsKeyDown(left:Get())  then bv.velocity += flyspeed * markiplier * camframe.RightVector * -1 end
             if input:IsKeyDown(back:Get())  then bv.velocity += flyspeed * markiplier * camframe.LookVector * -1 end
             if input:IsKeyDown(right:Get()) then bv.velocity += flyspeed * markiplier * camframe.RightVector end
-            if input:IsKeyDown(up:Get())    then bv.velocity += flyspeed * markiplier * camframe.UpVector end
-            if input:IsKeyDown(down:Get())  then bv.velocity += flyspeed * markiplier * camframe.UpVector * -1 end
+            if input:IsKeyDown(up:Get())    then bv.velocity += flyspeed * markiplier * Vector3(0,1,0) end
+            if input:IsKeyDown(down:Get())  then bv.velocity += flyspeed * markiplier * Vector3(0,-1,0) end
             wait()
-        until not flying
+        end
+        
         bg:Destroy()
         bv:Destroy()
-        
         if useplatformstand then human.PlatformStand = false end
     end
     
@@ -144,6 +145,14 @@ do
     end})
     
     frwd  = fly:AddKeybind({ Name="forwards", Value=Enum.KeyCode.W })
+    back  = fly:AddKeybind({ Name="backwards", Value=Enum.KeyCode.S })
+    left  = fly:AddKeybind({ Name="left",  Value=Enum.KeyCode.A })
+    right = fly:AddKeybind({ Name="right", Value=Enum.KeyCode.D })
+    up    = fly:AddKeybind({ Name="up",    Value=Enum.KeyCode.Space })
+    down  = fly:AddKeybind({ Name="down",  Value=Enum.KeyCode.LeftShift })
+    x2    = fly:AddKeybind({ Name="2x speed (hold)", Value=Enum.KeyCode.LeftControl })
+    x3    = fly:AddKeybind({ Name="3x speed (hold)", Value=Enum.KeyCode.LeftAlt })
+endfrwd  = fly:AddKeybind({ Name="forwards", Value=Enum.KeyCode.W })
     back  = fly:AddKeybind({ Name="backwards", Value=Enum.KeyCode.S })
     left  = fly:AddKeybind({ Name="left",  Value=Enum.KeyCode.A })
     right = fly:AddKeybind({ Name="right", Value=Enum.KeyCode.D })

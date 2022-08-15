@@ -10,5 +10,5 @@ Currently featuring
 
 Loadstring
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/kvbc/epic/main/epic.lua"))
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kvbc/epic/main/epic.lua", true))()
 ```

@@ -5,7 +5,6 @@ GUI with stuff i may use from time to time made with [Pepsi's UI Library](https:
 - Change walk speed
 - FE Fly (toggle PlatformStand) - customizable controls
 
-Loadstring
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kvbc/epic/main/epic.lua", true))()
 ```

@@ -289,7 +289,7 @@ do
     local jb = pepsi:CreateTab({ Name="JailBreak" })
     local g = jb:CreateSection({ Name="General" })
     
-    function SetItemConfigProperties (prop, value)
+    function SetGCProperties (prop, value)
         for _,v in pairs(getgc(true)) do
             if type(v) == 'table' then
                 SetProperty(v, prop, value)
@@ -297,7 +297,7 @@ do
         end
     end
     
-    function RestoreItemConfigProperties (prop)
+    function RestoreGCProperties (prop)
         for _,v in pairs(getgc(true)) do
             if type(v) == 'table' then
                 RestoreProperty(v, prop)
@@ -305,29 +305,37 @@ do
         end
     end
     
+    g:AddToggle({ Name="Keycard", Key=true,  Callback=function(yes)
+        if yes then
+            SetGCProperties("hasKey", function() return true end) 
+        else
+            RestoreGCProperties("hasKey") 
+        end
+    end})
+
     g:AddToggle({ Name="Insane Firerate", Key=true, Callback=function(yes)
         if yes then
-            SetItemConfigProperties("FireFreq", 9e9)
-            SetItemConfigProperties("IgnoreVerifyFireFreq", true)
+            SetGCProperties("FireFreq", 9e9)
+            SetGCProperties("IgnoreVerifyFireFreq", true)
         else
-            RestoreItemConfigProperties("FireFreq")
-            RestoreItemConfigProperties("IgnoreVerifyFireFreq")
+            RestoreGCProperties("FireFreq")
+            RestoreGCProperties("IgnoreVerifyFireFreq")
         end
     end})
     
     g:AddToggle({ Name="No camera shake", Key=true, Callback=function(yes)
         if yes then
-            SetItemConfigProperties("CamShakeMagnitude", 0)
+            SetGCProperties("CamShakeMagnitude", 0)
         else
-            RestoreItemConfigProperties("CamShakeMagnitude")
+            RestoreGCProperties("CamShakeMagnitude")
         end
     end})
     
     g:AddToggle({ Name="No bullet spread", Key=true, Callback=function(yes)
         if yes then
-            SetItemConfigProperties("BulletSpread", 0)
+            SetGCProperties("BulletSpread", 0)
         else
-            RestoreItemConfigProperties("BulletSpread")
+            RestoreGCProperties("BulletSpread")
         end
     end})
 end

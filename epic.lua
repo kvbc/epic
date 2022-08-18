@@ -313,16 +313,6 @@ do
         end
     end})
 
-    g:AddToggle({ Name="Insane Firerate", Key=true, Callback=function(yes)
-        if yes then
-            SetGCProperties("FireFreq", 9e9)
-            SetGCProperties("IgnoreVerifyFireFreq", true)
-        else
-            RestoreGCProperties("FireFreq")
-            RestoreGCProperties("IgnoreVerifyFireFreq")
-        end
-    end})
-    
     g:AddToggle({ Name="No camera shake", Key=true, Callback=function(yes)
         if yes then
             SetGCProperties("CamShakeMagnitude", 0)
